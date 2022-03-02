@@ -1,5 +1,4 @@
 export const domFactory = (context) => {
-
     
     const on = (eventName, target, handler) => {
 
