@@ -1,0 +1,46 @@
+{
+  "name": "task-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/main.js",
+  "precise-watcher": {
+    "src": [
+      {
+        "pattern": ["./src/**/*"],
+        "on": "change",
+        "run": [  
+          {
+            "cmd": "pnpm",
+            "args": [
+              "dev"
+            ],
+            "callNext": "parallel"
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "watch": "pnpm precise-watcher",
+    "dev": "cross-env NODE_ENV=development node ./esbuild.config.js",
+    "predev": "shx rm -rf dist/**/*",
+    "postdev": "shx cp ./index.html ./dist/index.html",
+    "build": "cross-env NODE_ENV=production node ./esbuild.config.js",
+    "prebuild": "shx rm -rf dist/**/*",
+    "postbuild": "shx cp ./index.html ./dist/index.html",
+    "serve": "pnpm dev & pnpm watch & npx http-server dist",
+    "start":"pnpm serve --enable-pre-post-scripts",
+    "prod":"pnpm build --enable-pre-post-scripts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.14.23",
+    "http-server": "^14.1.0",
+    "precise-watcher": "^2.1.0",
+    "shx": "^0.3.4"
+  }
+}

@@ -1,3 +1,13 @@
+#general
+node_modules
+.cache
+dist
+package-lock.json
+yarn-lock
+yarn.lock
+.vscode
+.cache
+
 # Logs
 logs
 *.log
